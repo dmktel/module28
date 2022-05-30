@@ -215,7 +215,7 @@ class MainPage(WebPage):
     manufacturer_filter = WebElement(xpath="//span[contains(text(),'Производитель')]")
     checkbox_aoc = WebElement(xpath="//input[@id='value-14600000']")
     show_link = WebElement(xpath="//a[contains(text(),'показать')]")
-    diagonal_link = WebElement(xpath="//span[contains(text(),'Диагональ \"')]")
+    diagonal_link = WebElement(xpath="//span[@id='bold-194']")
     min_field_diagonal_monitor = WebElement(xpath="//input[@id='filter_value_digital_min_194']")
     max_field_diagonal_monitor = WebElement(xpath="//input[@id='filter_value_digital_max_194']")
     display_type_link = WebElement(xpath="//span[contains(text(),'Тип матрицы')]")

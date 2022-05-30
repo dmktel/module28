@@ -55,7 +55,6 @@ def test_about_page_link(web_browser):
 def test_pc_configuration_page_link(web_browser):
     page = MainPage(web_browser)
     page.pc_configuration_page_link.click()
-
     assert page.pc_configuration_page_header.get_text() == 'Конфигуратор ПК'
 
 
@@ -63,7 +62,6 @@ def test_pc_configuration_page_link(web_browser):
 def test_paid_page_link(web_browser):
     page = MainPage(web_browser)
     page.paid_page_link.click()
-
     assert page.paid_page_header.get_text() == 'Оплата'
 
 
@@ -71,7 +69,6 @@ def test_paid_page_link(web_browser):
 def test_delivery_page_link(web_browser):
     page = MainPage(web_browser)
     page.delivery_page_link.click()
-
     assert page.delivery_page_header.get_text() == 'Доставка'
 
 
@@ -79,7 +76,6 @@ def test_delivery_page_link(web_browser):
 def test_pickup_page_link(web_browser):
     page = MainPage(web_browser)
     page.pickup_page_link.click()
-
     assert page.pickup_page_header.get_text() == 'Самовывоз / Пункты выдачи заказов'
 
 
@@ -87,7 +83,6 @@ def test_pickup_page_link(web_browser):
 def test_warranty_page_link(web_browser):
     page = MainPage(web_browser)
     page.warranty_page_link.click()
-
     assert page.warranty_page_header.get_text() == 'Гарантия и возврат товара'
 
 
@@ -95,7 +90,6 @@ def test_warranty_page_link(web_browser):
 def test_catalog_by_brends_link(web_browser):
     page = MainPage(web_browser)
     page.catalog_by_brends.click()
-
     assert page.first_brend.get_text() == '1MORE'
 
 
@@ -104,8 +98,8 @@ def test_catalog_by_types_link(web_browser):
     page = MainPage(web_browser)
     page.catalog_by_brends.click()
     page.catalog_by_types.click()
-
     assert page.first_type.get_text() == 'БЛОКИ ПИТАНИЯ'
+
 
 # chargers page title testing
 def test_chargers_page(web_browser):
@@ -137,7 +131,6 @@ def test_laptop_dell_next_page(web_browser):
         page.scroll_down()
         time.sleep(1)
         assert f"https://www.regard.ru/catalog/group24014/page{i + 1}.htm" in page.get_current_url()
-
 
 
 # climate stuff page testing
