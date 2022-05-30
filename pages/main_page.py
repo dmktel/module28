@@ -1,7 +1,5 @@
 from pages.base import WebPage
-from pages.elements import WebElement
-from pages.elements import ManyWebElements
-from selenium.webdriver import ActionChains
+from pages.elements import WebElement, ManyWebElements
 
 
 class MainPage(WebPage):
@@ -10,14 +8,20 @@ class MainPage(WebPage):
         url = "https://www.regard.ru/"
         super().__init__(driver, url)
 
-    # about page
-    about_page = WebElement(xpath='//h1[contains(text(),"Общая информация)]')
-
     # main page
     login_button = WebElement(xpath='//span[@class="login"]')
     field_email = WebElement(xpath='//input[@name="private_login"]')
     field_password = WebElement(xpath='//input[@name="private_password"]')
     enter_btn = WebElement(xpath='//button[@id="persona_loginButton"]')
+    login_user_name = WebElement(xpath="//span[@class='login']")
+    logout_button = WebElement(xpath="//a[@id='persona_logoutButton']")
+
+    # about page
+    about_page = WebElement(xpath="//a[@name='about']")
+    main_info_link = WebElement(xpath="//a[contains(text(),'Общая информация')]")
+    main_info_page_header = WebElement(xpath="//h1[contains(text(),'Общая информация')]")
+    awards_link = WebElement(xpath="//a[contains(text(),'Наши награды')]")
+    awards_page_header = WebElement(xpath="//h1[contains(text(),'Наши награды')]")
 
     # hits main page
     items_titles = ManyWebElements(xpath="//div[@class='bcontent']/div[@class='aheader']/a")
@@ -64,8 +68,11 @@ class MainPage(WebPage):
     # selling page
     selling_link = WebElement(xpath='//a[contains(text(),"Распродажа")]')
     selling_page_header = WebElement(xpath='//h1[contains(text(),"Распродажа (новые товары по сниженным ценам)")]')
-    page2_link = WebElement(xpath='//a[normalize-space()="2"]')
-    page3_link = WebElement(xpath='//a[normalize-space()="3"]')
+
+    # dell laptop next page
+    laptop_link = WebElement(xpath="//a[contains(text(),'Ноутбуки')]")
+    dell_laptop_link = WebElement(xpath="//div[@id='lmenu']/ul[@class='menu ']/li[16]/ul[1]/li[5]/a[1]")
+    pagination_links = ManyWebElements(xpath="//div[@class='pagination']/a")
 
     # appliance page
     appliance_link = WebElement(xpath='//a[contains(text(),"Бытовая техника")]')
@@ -155,7 +162,7 @@ class MainPage(WebPage):
         xpath="//li[contains(@class,'open current')]//a[contains(text(),'AMD Socket sTRX4')]")
     mb_amd_strx4_page_header = WebElement(xpath="//h1[contains(text(),'Материнские платы AMD Socket sTRX4')]")
     mb_intel_1151_V2_link = WebElement(
-        xpath='//li[contains(@class,"open")]//a[contains(text(),"Intel Socket 1151 v2")]')
+        xpath="//li[contains(@class,'open')]//a[contains(text(),'Intel Socket 1151 v2')]")
     mb_intel_1151_V2_page_header = WebElement(xpath="//h1[contains(text(),'Материнские платы Intel Socket 1151 v2')]")
     mb_intel_1200_link = WebElement(xpath='//li[contains(@class,"open")]//a[contains(text(),"Intel Socket 1200")]')
     mb_intel_1200_page_header = WebElement(xpath="//h1[contains(text(),'Материнские платы Intel Socket 1200')]")
@@ -204,13 +211,13 @@ class MainPage(WebPage):
     all_monitors_link = WebElement(xpath="//li[contains(@class,'open')]//ul//li//a[contains(@class,'red')][contains("
                                          "text(),'Все товары раздела')]")
 
-    # filters
+    # filters monitors
     manufacturer_filter = WebElement(xpath="//span[contains(text(),'Производитель')]")
     checkbox_aoc = WebElement(xpath="//input[@id='value-14600000']")
     show_link = WebElement(xpath="//a[contains(text(),'показать')]")
     diagonal_link = WebElement(xpath="//span[contains(text(),'Диагональ \"')]")
-    min_field = WebElement(xpath="//input[@id='filter_value_digital_min_194']")
-    max_field = WebElement(xpath="//input[@id='filter_value_digital_max_194']")
+    min_field_diagonal_monitor = WebElement(xpath="//input[@id='filter_value_digital_min_194']")
+    max_field_diagonal_monitor = WebElement(xpath="//input[@id='filter_value_digital_max_194']")
     display_type_link = WebElement(xpath="//span[contains(text(),'Тип матрицы')]")
     checkbox_ips = WebElement(xpath="//input[@id='value-832']")
     display_type_close_tab_link = WebElement(xpath="//span[@id='bold-195']")
@@ -220,6 +227,16 @@ class MainPage(WebPage):
     connectors_link = WebElement(xpath="//span[contains(text(),'Разъёмы')]")
     checkbox_display_port = WebElement(xpath="//input[@id='value-847']")
 
-
-
-
+    # filters printers
+    printers_link = WebElement(xpath="//a[contains(text(),'Принтеры и МФУ')]")
+    all_printers_link = WebElement(xpath="//div[@id='lmenu']/ul[contains(@class,'menu')]/li[contains(@class,"
+                                         "'open')]/ul/li[1]/a[1]")
+    checkbox_hp_printers = WebElement(xpath="//input[@id='value-3500000']")
+    printers_device_type_link = WebElement(xpath="//span[@id='bold-1924']")
+    checkbox_hp_mfu = WebElement(xpath="//input[@id='value-5275']")
+    printers_type_technology_link = WebElement(xpath="//span[@id='bold-1926']")
+    checkbox_hp_mfu_laser = WebElement(xpath="//input[@id='value-5270']")
+    price_filter = WebElement(xpath="//span[@id='bold-2']")
+    min_field_price_hp_mfu_laser = WebElement(xpath="//input[@id='filter_value_digital_min_2']")
+    max_field_price_hp_mfu_laser = WebElement(xpath="//input[@id='filter_value_digital_max_2']")
+    make_filters = WebElement(xpath="//a[@id='b_apply_filter']")
