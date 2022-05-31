@@ -1,11 +1,10 @@
-import pytest
 import time
 from pages.main_page import MainPage
 from data import valid_email_1, valid_password
 
 
+# tests start in CLI wth this command
 # python3 -m pytest --driver Chrome --driver-path ./chromedriver tests/test_main_page.py
-# python3 -m pytest --driver Firefox --driver-path ./geckodriver tests/test_main_page.py
 
 # page access test
 def test_access_to_main_page(web_browser):
