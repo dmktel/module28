@@ -234,7 +234,7 @@ def test_hdd_2_page(web_browser):
     assert page.hdd_2_toshiba_page_header.get_text() == 'Жёсткие диски (HDD) TOSHIBA (2.5")'
     page.hdd_2_western_digital_link.click()
     page.wait_page_loaded(3)
-    page.hdd_2_western_digital_page_header.get_text() == 'Жёсткие диски (HDD) WESTERN DIGITAL (2.5")'
+    assert page.hdd_2_western_digital_page_header.get_text() == 'Жёсткие диски (HDD) WESTERN DIGITAL (2.5")'
 
 
 # HDD 3.5" page testing
@@ -250,7 +250,7 @@ def test_hdd_3_page(web_browser):
     assert page.hdd_3_toshiba_page_header.get_text() == 'Жёсткие диски (HDD) TOSHIBA (3.5")'
     page.hdd_3_western_digital_link.click()
     page.wait_page_loaded(3)
-    page.hdd_3_western_digital_page_header.get_text() == 'Жёсткие диски (HDD) WESTERN DIGITAL (3.5")'
+    assert page.hdd_3_western_digital_page_header.get_text() == 'Жёсткие диски (HDD) WESTERN DIGITAL (3.5")'
 
 
 # motherboards page testing
@@ -357,11 +357,11 @@ def test_desktop_acer_page_sorting_by_name(web_browser):
     page = MainPage(web_browser)
     page.desktops_link.click()
     page.desktops_acer_link.click()
-    page.sort_by_name.click()
+    page.sort_by_name[0].click()
     page.wait_page_loaded(3)
     # desktop acer page sorting by title testing
-    assert page.items_titles[0].text == 'Acer Veriton S2680G (DT.VV2ER.00B)' or page.items_titles[
-        0].text == 'Acer Veriton X2670G (DT.VTFER.03F)'
+    assert 'Acer Veriton S2680G (DT.VV2ER.00B)' in page.items_titles[0].text or 'Acer Veriton X2665G (DT.VSEER.067)' \
+           in page.items_titles[0].text
 
 
 # desktop acer page sorting by price testing

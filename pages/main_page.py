@@ -197,7 +197,7 @@ class MainPage(WebPage):
     desktops_msi_page_header = WebElement(xpath="//h1[contains(text(),'Настольные компьютеры (ПК) MSI')]")
 
     # sorting
-    sort_by_name = WebElement(xpath="//a[@class='sortby curr asc' and contains(text(),'названию')]")
+    sort_by_name = ManyWebElements(xpath="//div[@class='sort']/a")
     sort_by_price = WebElement(xpath="//a[contains(text(),'цене')]")
     sort_by_lst = WebElement(xpath="//a[@class='sortby' and contains(text(),'списком')]")
     prices = ManyWebElements(xpath="//div[@class='list-price']/span")

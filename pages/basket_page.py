@@ -10,6 +10,7 @@ class BasketPage(MainPage):
     search_button = WebElement(xpath="//button[contains(text(),'Найти')]")
     add_to_basket_link = ManyWebElements(xpath="//div[@class='price']/span/a")
     items_titles = ManyWebElements(xpath="//div[@class='bcontent']/div[@class='aheader']/a")
+    items_ids_search = ManyWebElements(xpath="//div[@class='bcontent']/div[@class='block_img']/div[@class='code']")
     basket_link = WebElement(xpath="//div[@id='basket']/a")
     basket_page_header = WebElement(xpath="//h1[contains(text(),'Корзина')]")
     items_ids = ManyWebElements(xpath="//tr[@class='goods_line']/td[@class='t1']")

@@ -11,6 +11,7 @@ def test_login(web_browser):
     page = BasketPage(web_browser)
     page.search_field.send_keys(router)
     page.search_button.click()
+    id_item_1 = page.items_ids_search[0].text
     # check right item found
     assert 'Keenetic Giant' in page.items_titles[0].text
     page.add_to_basket_link[0].click()
@@ -22,7 +23,7 @@ def test_login(web_browser):
     items_count = page.items_ids.count()
     assert items_count == 1
     # check right item in the basket
-    assert page.items_ids[0].text == '384351'
+    assert page.items_ids[0].text in id_item_1
     # check price * amount = sum item in the basket
     price_item_1 = int(page.prices_in_basket[0].text)
     sum_item_1 = int(page.sum_item_basket[0].text)
@@ -33,6 +34,7 @@ def test_login(web_browser):
     page.search_button.click()
     # check right items found
     items_founds_count = page.items_titles.count()
+    id_item_2 = page.items_ids_search[0].text
     for i in range(items_founds_count):
         assert 'Huawei MateBook 14S' in page.items_titles[i].text
     page.add_to_basket_link[0].click()
@@ -42,7 +44,7 @@ def test_login(web_browser):
     items_count = page.items_ids.count()
     assert items_count == 2
     # check right item in the basket
-    assert page.items_ids[1].text == '414118'
+    assert page.items_ids[1].text in id_item_2
     # check price * amount = sum item in the basket
     price_item_2 = int(page.prices_in_basket[1].text)
     sum_item_2 = int(page.sum_item_basket[1].text)
@@ -55,6 +57,7 @@ def test_login(web_browser):
     page.search_button.click()
     # check right items found
     items_founds_count = page.items_titles.count()
+    id_item_3 = page.items_ids_search[0].text
     for i in range(items_founds_count):
         assert 'NVIDIA GeForce RTX3050' in page.items_titles[i].text
     page.add_to_basket_link[0].click()
@@ -64,7 +67,7 @@ def test_login(web_browser):
     items_count = page.items_ids.count()
     assert items_count == 3
     # check right item in the basket
-    assert page.items_ids[2].text == '418231'
+    assert page.items_ids[2].text in id_item_3
     # check total sum items in the basket
     price_item_3 = int(page.prices_in_basket[2].text)
     sum_item_3 = int(page.sum_item_basket[2].text)
@@ -74,6 +77,7 @@ def test_login(web_browser):
     assert sum_item_1 + sum_item_2 + sum_item_3 == total_sum
     # delete third item
     page.delete_button[2].click()
+    time.sleep(1)
     items_count = page.items_ids.count()
     # check items in basket
     assert items_count == 2
@@ -82,6 +86,7 @@ def test_login(web_browser):
     assert sum_item_1 + sum_item_2 == total_sum
     # delete second item
     page.delete_button[1].click()
+    time.sleep(1)
     items_count = page.items_ids.count()
     # check items in basket
     assert items_count == 1
@@ -90,6 +95,7 @@ def test_login(web_browser):
     assert sum_item_1 == total_sum
     # delete first item
     page.delete_button[0].click()
+    time.sleep(1)
     # check items in basket
     assert page.empty_basket.get_text() == 'В корзине нет товаров.'
 
